@@ -12,10 +12,7 @@ export interface IPropsBookCard {
 }
 const BookCard = (props: IPropsBookCard) => {
 	return (
-		<Link
-			href={`/book/${props.id}`}
-			className='card group bg-base-100 shadow-xl'
-		>
+		<div className='card bg-base-100 shadow-xl'>
 			<figure>
 				<Image
 					src={props.imgUrl}
@@ -26,7 +23,10 @@ const BookCard = (props: IPropsBookCard) => {
 				/>
 			</figure>
 			<div className='card-body'>
-				<h2 className='card-title group-hover:underline w-fit'>{props.title}</h2>
+				<Link href={`/book/${props.id}`}>
+					<h2 className='card-title underline underline-offset-4 w-fit'>{props.title}</h2>
+				</Link>
+
 				<p>{props.description}</p>
 				<div className='card-actions justify-end'>
 					<button className='btn btn-primary px-3'>
@@ -38,7 +38,7 @@ const BookCard = (props: IPropsBookCard) => {
 					</button>
 				</div>
 			</div>
-		</Link>
+		</div>
 	);
 };
 

@@ -10,21 +10,21 @@ const data: IPropsBookmarkedCard[] = [
 		imgUrl: 'https://placehold.co/600x400',
 		description: 'description',
 		title: 'Book A',
-		readingStatus: ReadingStatus.CurrRead,
+		readingStatus: ReadingStatus.WantRead,
 	},
 	{
 		id: 2,
 		imgUrl: 'https://placehold.co/600x400',
 		description: 'description',
 		title: 'Book A',
-		readingStatus: ReadingStatus.CurrRead,
+		readingStatus: ReadingStatus.WantRead,
 	},
 	{
 		id: 3,
 		imgUrl: 'https://placehold.co/600x400',
 		description: 'description',
 		title: 'Book A',
-		readingStatus: ReadingStatus.CurrRead,
+		readingStatus: ReadingStatus.Read,
 	},
 	{
 		id: 4,
@@ -38,7 +38,7 @@ const BookmarksContainer = ({ className }: { className?: string }) => {
 	return (
 		<section
 			className={clsx(
-				'py-8 px-5 grid gap-4 grid-cols-5 w-full bg-neutral rounded-lg',
+				'py-8 px-5 grid gap-4 grid-cols-4 w-full bg-neutral rounded-lg',
 				className
 			)}
 		>

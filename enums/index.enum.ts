@@ -1,5 +1,5 @@
 export enum ReadingStatus {
-	WantRead,
-	CurrRead,
-	Read,
+	WantRead = 'Want to read',
+	CurrRead = 'Currently Reading',
+	Read = 'Read',
 }

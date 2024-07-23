@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { IoBookmarkOutline } from 'react-icons/io5';
 import { IoBookmark } from 'react-icons/io5';
@@ -12,6 +13,20 @@ export interface IPropsBookmarkedCard {
 	readingStatus: ReadingStatus;
 }
 const BookBookMarkedCard = (props: IPropsBookmarkedCard) => {
+	const [selectedStatus, setSelectedStatus] = useState<string>(
+		props.readingStatus
+	);
+	const options = Object.values(ReadingStatus).map((status) => (
+		<option
+			key={status}
+			value={status}
+		>
+			{status}
+		</option>
+	));
+	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		setSelectedStatus(event.target.value);
+	};
 	return (
 		<div className='card bg-base-100 shadow-xl'>
 			<figure>
@@ -31,26 +46,13 @@ const BookBookMarkedCard = (props: IPropsBookmarkedCard) => {
 					<h2 className='card-title hover:underline w-fit '>{props.title}</h2>
 				</Link>
 				<p>{props.description}</p>
-				<div className='dropdown dropdown-end mt-3'>
-					<div
-						tabIndex={0}
-						role='button'
-						className='btn'
-					>
-						Click
-					</div>
-					<ul
-						tabIndex={0}
-						className='dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-2 shadow'
-					>
-						<li>
-							<a>Item 1</a>
-						</li>
-						<li>
-							<a>Item 2</a>
-						</li>
-					</ul>
-				</div>
+				<select
+					value={selectedStatus}
+					onChange={handleChange}
+					className='select select-bordered w-full max-w-xs my-4'
+				>
+					{options}
+				</select>
 				<div className='card-actions justify-end'>
 					<button className='btn btn-primary px-3'>
 						<IoBookmark size={20} />
