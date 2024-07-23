@@ -26,7 +26,7 @@ const BookCard = (props: IPropsBookCard) => {
 				/>
 			</figure>
 			<div className='card-body'>
-				<h2 className='card-title group-hover:underline'>{props.title}</h2>
+				<h2 className='card-title group-hover:underline w-fit'>{props.title}</h2>
 				<p>{props.description}</p>
 				<div className='card-actions justify-end'>
 					<button className='btn btn-primary px-3'>

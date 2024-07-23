@@ -2,19 +2,18 @@ import React from 'react';
 import Image from 'next/image';
 import { IoBookmarkOutline } from 'react-icons/io5';
 import { IoBookmark } from 'react-icons/io5';
+import { ReadingStatus } from '@/enums/index.enum';
 import Link from 'next/link';
-export interface IPropsBookCard {
+export interface IPropsBookmarkedCard {
 	id: number;
 	imgUrl: string;
 	title: string;
 	description: string;
+	readingStatus: ReadingStatus;
 }
-const BookBookMarkedCard = (props: IPropsBookCard) => {
+const BookBookMarkedCard = (props: IPropsBookmarkedCard) => {
 	return (
-		<Link
-			href={`/book/${props.id}`}
-			className='card group bg-base-100 shadow-xl'
-		>
+		<div className='card bg-base-100 shadow-xl'>
 			<figure>
 				<Image
 					src={props.imgUrl}
@@ -25,15 +24,40 @@ const BookBookMarkedCard = (props: IPropsBookCard) => {
 				/>
 			</figure>
 			<div className='card-body'>
-				<h2 className='card-title group-hover:underline'>{props.title}</h2>
+				<Link
+					href={`/book/${props.id}`}
+					className='w-fit '
+				>
+					<h2 className='card-title hover:underline w-fit '>{props.title}</h2>
+				</Link>
 				<p>{props.description}</p>
+				<div className='dropdown dropdown-end mt-3'>
+					<div
+						tabIndex={0}
+						role='button'
+						className='btn'
+					>
+						Click
+					</div>
+					<ul
+						tabIndex={0}
+						className='dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-2 shadow'
+					>
+						<li>
+							<a>Item 1</a>
+						</li>
+						<li>
+							<a>Item 2</a>
+						</li>
+					</ul>
+				</div>
 				<div className='card-actions justify-end'>
 					<button className='btn btn-primary px-3'>
-						<IoBookmarkOutline size={20} />
+						<IoBookmark size={20} />
 					</button>
 				</div>
 			</div>
-		</Link>
+		</div>
 	);
 };
 
