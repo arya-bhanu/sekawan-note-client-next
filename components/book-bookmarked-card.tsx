@@ -5,13 +5,10 @@ import { IoBookmarkOutline } from 'react-icons/io5';
 import { IoBookmark } from 'react-icons/io5';
 import { ReadingStatus } from '@/enums/index.enum';
 import Link from 'next/link';
-export interface IPropsBookmarkedCard {
-	id: number;
-	imgUrl: string;
-	title: string;
-	description: string;
+import { IPropsBookCard } from './book-card';
+export type IPropsBookmarkedCard = Omit<IPropsBookCard, 'isBookmarked'> & {
 	readingStatus: ReadingStatus;
-}
+};
 const BookBookMarkedCard = (props: IPropsBookmarkedCard) => {
 	const [selectedStatus, setSelectedStatus] = useState<string>(
 		props.readingStatus

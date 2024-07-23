@@ -6,13 +6,11 @@ import Image from 'next/image';
 import { IoBookmarkOutline } from 'react-icons/io5';
 import { IoBookmark } from 'react-icons/io5';
 import CommentCard from '@/components/comment-card';
-export interface IBookDetail {
-	id: number;
-	imgUrl: string;
-	title: string;
-	description: string;
+import { IPropsBookCard } from '@/components/book-card';
+
+export type IBookDetail = Omit<IPropsBookCard, 'isBookmarked'> & {
 	comments: Comment[] | [];
-}
+};
 
 const BookDetail = () => {
 	const params = useParams<{ id: string }>();
@@ -79,7 +77,7 @@ const BookDetail = () => {
 				className='mt-10 w-full'
 			>
 				<textarea
-                    rows={5}
+					rows={5}
 					className='textarea textarea-bordered w-full'
 					placeholder='Your Opinion'
 				></textarea>
